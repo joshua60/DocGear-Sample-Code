@@ -1,0 +1,59 @@
+@tailwind base;
+
+@tailwind components;
+
+@tailwind utilities;
+
+/* 基本設定 */
+@layer base {
+  /* 自定義字型設定 */
+  /* @font-face {
+    font-family:'EUDC';
+    src: url('/fonts/EUDC.ttf');
+    unicode-range: U+(E000-F8FF);
+  } */
+  /* .font-extra {
+    font-family: 'EUDC';
+  } */
+  /* 所有td都會有border-2 border-black的css效果 */
+  td {
+    @apply border-2 border-black;
+  }
+  /* 所有li都會有border-b-2  border-belstarGray text-belstarGray的css效果 */
+  li {
+    @apply border-b-2 border-belstarGray text-belstarGray;
+  }
+}
+/*把重複使用到的css寫成component，需要使用到這個css時直接 class=table-td 就可以有效果*/
+@layer components {
+  .table-caption {
+    @apply bg-ruri text-white font-normal text-base px-2 py-2 text-left rounded-md;
+  }
+  .table-td {
+    @apply border-belstarGray text-belstarGray  border-t-0 border-l-0 border-r-0 py-1 font-light border-b text-sm px-1;
+  }
+  .table-display {
+    @apply flex justify-between;
+  }
+  .page {
+    @apply w-20cm mx-auto;
+  }
+  /* 在print情況下所設定的css */
+  @media print {
+    .break-inside {
+      page-break-inside: avoid;
+    }
+    .break-before {
+      page-break-before: always;
+    }
+    .break-after {
+      page-break-after: always;
+    }
+    .count-reset {
+      counter-reset: page 0;
+    }
+    .count-increment {
+      counter-increment: page;
+    }
+  }
+}
