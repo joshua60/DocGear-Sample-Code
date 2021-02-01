@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" href="http://192.168.20.62:8683/template/46591217/1.0.1/favicon.ico"><script>window.PagedConfig = {
+        auto: false,
+        before() { 
+          console.log("before")
+        },
+        after(flow){
+          console.log("after", flow) 
+        }
+      };</script><title>credit-c-billing</title><link href="./assets/css/creditCard.css" rel="preload" as="style"><link href="./js/creditCard.js" rel="preload" as="script"><link href="http://192.168.20.62:8683/template/46591217/1.0.1/js/chunk-vendors.b211440b.js" rel="preload" as="script"><style type="text/css" data-pagedjs-inserted-styles="true">
+:root {
+	--pagedjs-width: 8.5in;
+	--pagedjs-height: 11in;
+	--pagedjs-width-right: 8.5in;
+	--pagedjs-height-right: 11in;
+	--pagedjs-width-left: 8.5in;
+	--pagedjs-height-left: 11in;
+	--pagedjs-pagebox-width: 8.5in;
+	--pagedjs-pagebox-height: 11in;
+	--pagedjs-margin-top: 1in;
+	--pagedjs-margin-right: 1in;
+	--pagedjs-margin-bottom: 1in;
+	--pagedjs-margin-left: 1in;
+	--pagedjs-padding-top: 0mm;
+	--pagedjs-padding-right: 0mm;
+	--pagedjs-padding-bottom: 0mm;
+	--pagedjs-padding-left: 0mm;
+	--pagedjs-border-top: 0mm;
+	--pagedjs-border-right: 0mm;
+	--pagedjs-border-bottom: 0mm;
+	--pagedjs-border-left: 0mm;
+	--pagedjs-bleed-top: 0mm;
+	--pagedjs-bleed-right: 0mm;
+	--pagedjs-bleed-bottom: 0mm;
+	--pagedjs-bleed-left: 0mm;
+	--pagedjs-bleed-right-top: 0mm;
+	--pagedjs-bleed-right-right: 0mm;
+	--pagedjs-bleed-right-bottom: 0mm;
+	--pagedjs-bleed-right-left: 0mm;
+	--pagedjs-bleed-left-top: 0mm;
+	--pagedjs-bleed-left-right: 0mm;
+	--pagedjs-bleed-left-bottom: 0mm;
+	--pagedjs-bleed-left-left: 0mm;
+	--pagedjs-crop-color: black;
+	--pagedjs-crop-offset: 2mm;
+	--pagedjs-crop-stroke: 1px;
+	--pagedjs-cross-size: 5mm;
+	--pagedjs-mark-cross-display: none;
+	--pagedjs-mark-crop-display: none;
+	--pagedjs-page-count: 0;
+	--pagedjs-page-counter-increment: 1;
+}
+
+@page {
+	size: letter;
+	margin: 0;
+}
+
+.pagedjs_sheet {
+	box-sizing: border-box;
+	width: var(--pagedjs-width);
+	height: var(--pagedjs-height);
+	overflow: hidden;
+	position: relative;
+	display: grid;
+	grid-template-columns: [bleed-left] var(--pagedjs-bleed-left) [sheet-center] calc(var(--pagedjs-width) - var(--pagedjs-bleed-left) - var(--pagedjs-bleed-right)) [bleed-right] var(--pagedjs-bleed-right);
+	grid-template-rows: [bleed-top] var(--pagedjs-bleed-top) [sheet-middle] calc(var(--pagedjs-height) - var(--pagedjs-bleed-top) - var(--pagedjs-bleed-bottom)) [bleed-bottom] var(--pagedjs-bleed-bottom);
+}
+
+.pagedjs_right_page .pagedjs_sheet {
+	width: var(--pagedjs-width-right);
+	height: var(--pagedjs-height-right);
+	grid-template-columns: [bleed-left] var(--pagedjs-bleed-right-left) [sheet-center] calc(var(--pagedjs-width) - var(--pagedjs-bleed-right-left) - var(--pagedjs-bleed-right-right)) [bleed-right] var(--pagedjs-bleed-right-right);
+	grid-template-rows: [bleed-top] var(--pagedjs-bleed-right-top) [sheet-middle] calc(var(--pagedjs-height) - var(--pagedjs-bleed-right-top) - var(--pagedjs-bleed-right-bottom)) [bleed-bottom] var(--pagedjs-bleed-right-bottom);
+}
+
+.pagedjs_left_page .pagedjs_sheet {
+	width: var(--pagedjs-width-left);
+	height: var(--pagedjs-height-left);
+	grid-template-columns: [bleed-left] var(--pagedjs-bleed-left-left) [sheet-center] calc(var(--pagedjs-width) - var(--pagedjs-bleed-left-left) - var(--pagedjs-bleed-left-right)) [bleed-right] var(--pagedjs-bleed-left-right);
+	grid-template-rows: [bleed-top] var(--pagedjs-bleed-left-top) [sheet-middle] calc(var(--pagedjs-height) - var(--pagedjs-bleed-left-top) - var(--pagedjs-bleed-left-bottom)) [bleed-bottom] var(--pagedjs-bleed-left-bottom);
+}
+
+.pagedjs_bleed {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-wrap: nowrap;
+	overflow: hidden;
+}
+
+.pagedjs_bleed-top {
+	grid-column: bleed-left / -1;
+	grid-row: bleed-top;
+	flex-direction: row;
+}
+
+.pagedjs_bleed-bottom {
+	grid-column: bleed-left / -1;
+	grid-row: bleed-bottom;
+	flex-direction: row;
+}
+
+.pagedjs_bleed-left {
+	grid-column: bleed-left;
+	grid-row: bleed-top / -1;
+	flex-direction: column;
+}
+
+.pagedjs_bleed-right {
+	grid-column: bleed-right;
+	grid-row: bleed-top / -1;
+	flex-direction: column;
+}
+
+.pagedjs_marks-crop {
+	display: var(--pagedjs-mark-crop-display);
+	flex-grow: 0;
+	flex-shrink: 0;
+	z-index: 9999999999;
+}
+
+.pagedjs_bleed-top .pagedjs_marks-crop:nth-child(1),
+.pagedjs_bleed-bottom .pagedjs_marks-crop:nth-child(1) {
+	width: calc(var(--pagedjs-bleed-left) - var(--pagedjs-crop-stroke));
+	border-right: var(--pagedjs-crop-stroke) solid var(--pagedjs-crop-color);
+}
+
+.pagedjs_right_page .pagedjs_bleed-top .pagedjs_marks-crop:nth-child(1),
+.pagedjs_right_page .pagedjs_bleed-bottom .pagedjs_marks-crop:nth-child(1) {
+	width: calc(var(--pagedjs-bleed-right-left) - var(--pagedjs-crop-stroke));
+}
+
+.pagedjs_left_page .pagedjs_bleed-top .pagedjs_marks-crop:nth-child(1),
+.pagedjs_left_page .pagedjs_bleed-bottom .pagedjs_marks-crop:nth-child(1) {
+	width: calc(var(--pagedjs-bleed-left-left) - var(--pagedjs-crop-stroke));
+}
+
+.pagedjs_bleed-top .pagedjs_marks-crop:nth-child(3),
+.pagedjs_bleed-bottom .pagedjs_marks-crop:nth-child(3) {
+	width: calc(var(--pagedjs-bleed-right) - var(--pagedjs-crop-stroke));
+	border-left: var(--pagedjs-crop-stroke) solid var(--pagedjs-crop-color);
+}
+
+.pagedjs_right_page .pagedjs_bleed-top .pagedjs_marks-crop:nth-child(3),
+.pagedjs_right_page .pagedjs_bleed-bottom .pagedjs_marks-crop:nth-child(3) {
+	width: calc(var(--pagedjs-bleed-right-right) - var(--pagedjs-crop-stroke));
+}
+
+.pagedjs_left_page .pagedjs_bleed-top .pagedjs_marks-crop:nth-child(3),
+.pagedjs_left_page .pagedjs_bleed-bottom .pagedjs_marks-crop:nth-child(3) {
+	width: calc(var(--pagedjs-bleed-left-right) - var(--pagedjs-crop-stroke));
+}
+
+.pagedjs_bleed-top .pagedjs_marks-crop {
+	align-self: flex-start;
+	height: calc(var(--pagedjs-bleed-top) - var(--pagedjs-crop-offset));
+}
+
+.pagedjs_right_page .pagedjs_bleed-top .pagedjs_marks-crop {
+	height: calc(var(--pagedjs-bleed-right-top) - var(--pagedjs-crop-offset));
+}
+
+.pagedjs_left_page .pagedjs_bleed-top .pagedjs_marks-crop {
+	height: calc(var(--pagedjs-bleed-left-top) - var(--pagedjs-crop-offset));
+}
+
+.pagedjs_bleed-bottom .pagedjs_marks-crop {
+	align-self: flex-end;
+	height: calc(var(--pagedjs-bleed-bottom) - var(--pagedjs-crop-offset));
+}
+
+.pagedjs_right_page .pagedjs_bleed-bottom .pagedjs_marks-crop {
+	height: calc(var(--pagedjs-bleed-right-bottom) - var(--pagedjs-crop-offset));
+}
+
+.pagedjs_left_page .pagedjs_bleed-bottom .pagedjs_marks-crop {
+	height: calc(var(--pagedjs-bleed-left-bottom) - var(--pagedjs-crop-offset));
+}
+
+.pagedjs_bleed-left .pagedjs_marks-crop:nth-child(1),
+.pagedjs_bleed-right .pagedjs_marks-crop:nth-child(1) {
+	height: calc(var(--pagedjs-bleed-top) - var(--pagedjs-crop-stroke));
+	border-bottom: var(--pagedjs-crop-stroke) solid var(--pagedjs-crop-color);
+}
+
+.pagedjs_right_page .pagedjs_bleed-left .pagedjs_marks-crop:nth-child(1),
+.pagedjs_right_page .pagedjs_bleed-right .pagedjs_marks-crop:nth-child(1) {
+	height: calc(var(--pagedjs-bleed-right-top) - var(--pagedjs-crop-stroke));
+}
+
+.pagedjs_left_page .pagedjs_bleed-left .pagedjs_marks-crop:nth-child(1),
+.pagedjs_left_page .pagedjs_bleed-right .pagedjs_marks-crop:nth-child(1) {
+	height: calc(var(--pagedjs-bleed-left-top) - var(--pagedjs-crop-stroke));
+}
+
+.pagedjs_bleed-left .pagedjs_marks-crop:nth-child(3),
+.pagedjs_bleed-right .pagedjs_marks-crop:nth-child(3) {
+	height: calc(var(--pagedjs-bleed-bottom) - var(--pagedjs-crop-stroke));
+	border-top: var(--pagedjs-crop-stroke) solid var(--pagedjs-crop-color);
+}
+
+.pagedjs_right_page .pagedjs_bleed-left .pagedjs_marks-crop:nth-child(3),
+.pagedjs_right_page .pagedjs_bleed-right .pagedjs_marks-crop:nth-child(3) {
+	height: calc(var(--pagedjs-bleed-right-bottom) - var(--pagedjs-crop-stroke));
+}
+
+.pagedjs_left_page .pagedjs_bleed-left .pagedjs_marks-crop:nth-child(3),
+.pagedjs_left_page .pagedjs_bleed-right .pagedjs_marks-crop:nth-child(3) {
+	height: calc(var(--pagedjs-bleed-left-bottom) - var(--pagedjs-crop-stroke));
+}
+
+.pagedjs_bleed-left .pagedjs_marks-crop {
+	width: calc(var(--pagedjs-bleed-left) - var(--pagedjs-crop-offset));
+	align-self: flex-start;
+}
+
+.pagedjs_right_page .pagedjs_bleed-left .pagedjs_marks-crop {
+	width: calc(var(--pagedjs-bleed-right-left) - var(--pagedjs-crop-offset));
+}
+
+.pagedjs_left_page .pagedjs_bleed-left .pagedjs_marks-crop {
+	width: calc(var(--pagedjs-bleed-left-left) - var(--pagedjs-crop-offset));
+}
+
+.pagedjs_bleed-right .pagedjs_marks-crop {
+	width: calc(var(--pagedjs-bleed-right) - var(--pagedjs-crop-offset));
+	align-self: flex-end;
+}
+
+.pagedjs_right_page .pagedjs_bleed-right .pagedjs_marks-crop {
+	width: calc(var(--pagedjs-bleed-right-right) - var(--pagedjs-crop-offset));
+}
+
+.pagedjs_left_page .pagedjs_bleed-right .pagedjs_marks-crop {
+	width: calc(var(--pagedjs-bleed-left-right) - var(--pagedjs-crop-offset));
+}
+
+.pagedjs_marks-middle {
+	display: flex;
+	flex-grow: 1;
+	flex-shrink: 0;
+	align-items: center;
+	justify-content: center;
+}
+
+.pagedjs_marks-cross {
+	display: var(--pagedjs-mark-cross-display);
+	background-image: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz48IURPQ1RZUEUgc3ZnIFBVQkxJQyAiLS8vVzNDLy9EVEQgU1ZHIDEuMS8vRU4iICJodHRwOi8vd3d3LnczLm9yZy9HcmFwaGljcy9TVkcvMS4xL0RURC9zdmcxMS5kdGQiPjxzdmcgdmVyc2lvbj0iMS4xIiBpZD0iTGF5ZXJfMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgeD0iMHB4IiB5PSIwcHgiIHdpZHRoPSIzMi41MzdweCIgaGVpZ2h0PSIzMi41MzdweCIgdmlld0JveD0iMC4xMDQgMC4xMDQgMzIuNTM3IDMyLjUzNyIgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAwLjEwNCAwLjEwNCAzMi41MzcgMzIuNTM3IiB4bWw6c3BhY2U9InByZXNlcnZlIj48cGF0aCBmaWxsPSJub25lIiBzdHJva2U9IiNGRkZGRkYiIHN0cm9rZS13aWR0aD0iMy4zODkzIiBzdHJva2UtbWl0ZXJsaW1pdD0iMTAiIGQ9Ik0yOS45MzEsMTYuMzczYzAsNy40ODktNi4wNjgsMTMuNTYtMTMuNTU4LDEzLjU2Yy03LjQ4MywwLTEzLjU1Ny02LjA3Mi0xMy41NTctMTMuNTZjMC03LjQ4Niw2LjA3NC0xMy41NTQsMTMuNTU3LTEzLjU1NEMyMy44NjIsMi44MTksMjkuOTMxLDguODg3LDI5LjkzMSwxNi4zNzN6Ii8+PGxpbmUgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjRkZGRkZGIiBzdHJva2Utd2lkdGg9IjMuMzg5MyIgc3Ryb2tlLW1pdGVybGltaXQ9IjEwIiB4MT0iMC4xMDQiIHkxPSIxNi4zNzMiIHgyPSIzMi42NDIiIHkyPSIxNi4zNzMiLz48bGluZSBmaWxsPSJub25lIiBzdHJva2U9IiNGRkZGRkYiIHN0cm9rZS13aWR0aD0iMy4zODkzIiBzdHJva2UtbWl0ZXJsaW1pdD0iMTAiIHgxPSIxNi4zNzMiIHkxPSIwLjEwNCIgeDI9IjE2LjM3MyIgeTI9IjMyLjY0MiIvPjxwYXRoIGZpbGw9Im5vbmUiIHN0cm9rZT0iI0ZGRkZGRiIgc3Ryb2tlLXdpZHRoPSIzLjM4OTMiIHN0cm9rZS1taXRlcmxpbWl0PSIxMCIgZD0iTTI0LjUwOCwxNi4zNzNjMCw0LjQ5Ni0zLjYzOCw4LjEzNS04LjEzNSw4LjEzNWMtNC40OTEsMC04LjEzNS0zLjYzOC04LjEzNS04LjEzNWMwLTQuNDg5LDMuNjQ0LTguMTM1LDguMTM1LTguMTM1QzIwLjg2OSw4LjIzOSwyNC41MDgsMTEuODg0LDI0LjUwOCwxNi4zNzN6Ii8+PHBhdGggZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMDAwMDAwIiBzdHJva2Utd2lkdGg9IjAuNjc3OCIgc3Ryb2tlLW1pdGVybGltaXQ9IjEwIiBkPSJNMjkuOTMxLDE2LjM3M2MwLDcuNDg5LTYuMDY4LDEzLjU2LTEzLjU1OCwxMy41NmMtNy40ODMsMC0xMy41NTctNi4wNzItMTMuNTU3LTEzLjU2YzAtNy40ODYsNi4wNzQtMTMuNTU0LDEzLjU1Ny0xMy41NTRDMjMuODYyLDIuODE5LDI5LjkzMSw4Ljg4NywyOS45MzEsMTYuMzczeiIvPjxsaW5lIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzAwMDAwMCIgc3Ryb2tlLXdpZHRoPSIwLjY3NzgiIHN0cm9rZS1taXRlcmxpbWl0PSIxMCIgeDE9IjAuMTA0IiB5MT0iMTYuMzczIiB4Mj0iMzIuNjQyIiB5Mj0iMTYuMzczIi8+PGxpbmUgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMDAwMDAwIiBzdHJva2Utd2lkdGg9IjAuNjc3OCIgc3Ryb2tlLW1pdGVybGltaXQ9IjEwIiB4MT0iMTYuMzczIiB5MT0iMC4xMDQiIHgyPSIxNi4zNzMiIHkyPSIzMi42NDIiLz48cGF0aCBkPSJNMjQuNTA4LDE2LjM3M2MwLDQuNDk2LTMuNjM4LDguMTM1LTguMTM1LDguMTM1Yy00LjQ5MSwwLTguMTM1LTMuNjM4LTguMTM1LTguMTM1YzAtNC40ODksMy42NDQtOC4xMzUsOC4xMzUtOC4xMzVDMjAuODY5LDguMjM5LDI0LjUwOCwxMS44ODQsMjQuNTA4LDE2LjM3MyIvPjxsaW5lIGZpbGw9Im5vbmUiIHN0cm9rZT0iI0ZGRkZGRiIgc3Ryb2tlLXdpZHRoPSIwLjY3NzgiIHN0cm9rZS1taXRlcmxpbWl0PSIxMCIgeDE9IjguMjM5IiB5MT0iMTYuMzczIiB4Mj0iMjQuNTA4IiB5Mj0iMTYuMzczIi8+PGxpbmUgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjRkZGRkZGIiBzdHJva2Utd2lkdGg9IjAuNjc3OCIgc3Ryb2tlLW1pdGVybGltaXQ9IjEwIiB4MT0iMTYuMzczIiB5MT0iOC4yMzkiIHgyPSIxNi4zNzMiIHkyPSIyNC41MDgiLz48L3N2Zz4=);
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  background-size: var(--pagedjs-cross-size);
+
+  z-index: 2147483647;
+	width: var(--pagedjs-cross-size);
+	height: var(--pagedjs-cross-size);
+}
+
+.pagedjs_pagebox {
+	box-sizing: border-box;
+	width: var(--pagedjs-pagebox-width);
+	height: var(--pagedjs-pagebox-height);
+	position: relative;
+	display: grid;
+	grid-template-columns: [left] var(--pagedjs-margin-left) [center] calc(var(--pagedjs-pagebox-width) - var(--pagedjs-margin-left) - var(--pagedjs-margin-right)) [right] var(--pagedjs-margin-right);
+	grid-template-rows: [header] var(--pagedjs-margin-top) [page] calc(var(--pagedjs-pagebox-height) - var(--pagedjs-margin-top) - var(--pagedjs-margin-bottom)) [footer] var(--pagedjs-margin-bottom);
+	grid-column: sheet-center;
+	grid-row: sheet-middle;
+}
+
+.pagedjs_pagebox * {
+	box-sizing: border-box;
+}
+
+.pagedjs_margin-top {
+	width: calc(var(--pagedjs-pagebox-width) - var(--pagedjs-margin-left) - var(--pagedjs-margin-right));
+	height: var(--pagedjs-margin-top);
+	grid-column: center;
+	grid-row: header;
+	flex-wrap: nowrap;
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	grid-template-rows: 100%;
+}
+
+.pagedjs_margin-top-left-corner-holder {
+	width: var(--pagedjs-margin-left);
+	height: var(--pagedjs-margin-top);
+	display: flex;
+	grid-column: left;
+	grid-row: header;
+}
+
+.pagedjs_margin-top-right-corner-holder {
+	width: var(--pagedjs-margin-right);
+	height: var(--pagedjs-margin-top);
+	display: flex;
+	grid-column: right;
+	grid-row: header;
+}
+
+.pagedjs_margin-top-left-corner {
+	width: var(--pagedjs-margin-left);
+}
+
+.pagedjs_margin-top-right-corner {
+	width: var(--pagedjs-margin-right);
+}
+
+.pagedjs_margin-right {
+	height: calc(var(--pagedjs-pagebox-height) - var(--pagedjs-margin-top) - var(--pagedjs-margin-bottom));
+	width: var(--pagedjs-margin-right);
+	right: 0;
+	grid-column: right;
+	grid-row: page;
+	display: grid;
+	grid-template-rows: repeat(3, 33.3333%);
+	grid-template-columns: 100%;
+}
+
+.pagedjs_margin-bottom {
+	width: calc(var(--pagedjs-pagebox-width) - var(--pagedjs-margin-left) - var(--pagedjs-margin-right));
+	height: var(--pagedjs-margin-bottom);
+	grid-column: center;
+	grid-row: footer;
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	grid-template-rows: 100%;
+}
+
+.pagedjs_margin-bottom-left-corner-holder {
+	width: var(--pagedjs-margin-left);
+	height: var(--pagedjs-margin-bottom);
+	display: flex;
+	grid-column: left;
+	grid-row: footer;
+}
+
+.pagedjs_margin-bottom-right-corner-holder {
+	width: var(--pagedjs-margin-right);
+	height: var(--pagedjs-margin-bottom);
+	display: flex;
+	grid-column: right;
+	grid-row: footer;
+}
+
+.pagedjs_margin-bottom-left-corner {
+	width: var(--pagedjs-margin-left);
+}
+
+.pagedjs_margin-bottom-right-corner {
+	width: var(--pagedjs-margin-right);
+}
+
+
+
+.pagedjs_margin-left {
+	height: calc(var(--pagedjs-pagebox-height) - var(--pagedjs-margin-top) - var(--pagedjs-margin-bottom));
+	width: var(--pagedjs-margin-left);
+	grid-column: left;
+	grid-row: page;
+	display: grid;
+	grid-template-rows: repeat(3, 33.33333%);
+	grid-template-columns: 100%;
+}
+
+.pagedjs_pages .pagedjs_pagebox .pagedjs_margin:not(.hasContent) {
+	visibility: hidden;
+}
+
+.pagedjs_pagebox > .pagedjs_area {
+	grid-column: center;
+	grid-row: page;
+	width: 100%;
+	height: 100%;
+	padding: var(--pagedjs-padding-top) var(--pagedjs-padding-right) var(--pagedjs-padding-bottom) var(--pagedjs-padding-left);
+	border-top: var(--pagedjs-border-top);
+	border-right: var(--pagedjs-border-right);
+	border-bottom: var(--pagedjs-border-bottom);
+	border-left: var(--pagedjs-border-left);
+}
+
+.pagedjs_pagebox > .pagedjs_area > .pagedjs_page_content {
+	width: 100%;
+	height: 100%;
+	position: relative;
+	column-fill: auto;
+}
+
+.pagedjs_page {
+	counter-increment: page var(--pagedjs-page-counter-increment);
+	width: var(--pagedjs-width);
+	height: var(--pagedjs-height);
+}
+
+.pagedjs_page.pagedjs_right_page {
+	width: var(--pagedjs-width-right);
+	height: var(--pagedjs-height-right);
+}
+
+.pagedjs_page.pagedjs_left_page {
+	width: var(--pagedjs-width-left);
+	height: var(--pagedjs-height-left);
+}
+
+.pagedjs_pages {
+	counter-reset: pages var(--pagedjs-page-count);
+}
+
+.pagedjs_pagebox .pagedjs_margin-top-left-corner,
+.pagedjs_pagebox .pagedjs_margin-top-right-corner,
+.pagedjs_pagebox .pagedjs_margin-bottom-left-corner,
+.pagedjs_pagebox .pagedjs_margin-bottom-right-corner,
+.pagedjs_pagebox .pagedjs_margin-top-left,
+.pagedjs_pagebox .pagedjs_margin-top-right,
+.pagedjs_pagebox .pagedjs_margin-bottom-left,
+.pagedjs_pagebox .pagedjs_margin-bottom-right,
+.pagedjs_pagebox .pagedjs_margin-top-center,
+.pagedjs_pagebox .pagedjs_margin-bottom-center,
+.pagedjs_pagebox .pagedjs_margin-top-center,
+.pagedjs_pagebox .pagedjs_margin-bottom-center,
+.pagedjs_margin-right-middle,
+.pagedjs_margin-left-middle  {
+	display: flex;
+	align-items: center;
+}
+
+.pagedjs_margin-right-top,
+.pagedjs_margin-left-top  {
+	display: flex;
+	align-items: flex-top;
+}
+
+
+.pagedjs_margin-right-bottom,
+.pagedjs_margin-left-bottom  {
+	display: flex;
+	align-items: flex-end;
+}
+
+.pagedjs_pagebox .pagedjs_margin-top-left,
+.pagedjs_pagebox .pagedjs_margin-top-right-corner,
+.pagedjs_pagebox .pagedjs_margin-bottom-left,
+.pagedjs_pagebox .pagedjs_margin-bottom-right-corner { text-align: left; }
+
+.pagedjs_pagebox .pagedjs_margin-top-left-corner,
+.pagedjs_pagebox .pagedjs_margin-top-right,
+.pagedjs_pagebox .pagedjs_margin-bottom-left-corner,
+.pagedjs_pagebox .pagedjs_margin-bottom-right { text-align: right; }
+
+.pagedjs_pagebox .pagedjs_margin-top-center,
+.pagedjs_pagebox .pagedjs_margin-bottom-center,
+.pagedjs_pagebox .pagedjs_margin-left-top,
+.pagedjs_pagebox .pagedjs_margin-left-middle,
+.pagedjs_pagebox .pagedjs_margin-left-bottom,
+.pagedjs_pagebox .pagedjs_margin-right-top,
+.pagedjs_pagebox .pagedjs_margin-right-middle,
+.pagedjs_pagebox .pagedjs_margin-right-bottom { text-align: center; }
+
+.pagedjs_pages .pagedjs_margin .pagedjs_margin-content {
+	width: 100%;
+}
+
+.pagedjs_pages .pagedjs_margin-left .pagedjs_margin-content::after,
+.pagedjs_pages .pagedjs_margin-top .pagedjs_margin-content::after,
+.pagedjs_pages .pagedjs_margin-right .pagedjs_margin-content::after,
+.pagedjs_pages .pagedjs_margin-bottom .pagedjs_margin-content::after {
+	display: block;
+}
+
+.pagedjs_pages > .pagedjs_page > .pagedjs_sheet > .pagedjs_pagebox > .pagedjs_area > div [data-split-to] {
+	margin-bottom: unset;
+	padding-bottom: unset;
+}
+
+.pagedjs_pages > .pagedjs_page > .pagedjs_sheet > .pagedjs_pagebox > .pagedjs_area > div [data-split-from] {
+	text-indent: unset;
+	margin-top: unset;
+	padding-top: unset;
+	initial-letter: unset;
+}
+
+.pagedjs_pages > .pagedjs_page > .pagedjs_sheet > .pagedjs_pagebox > .pagedjs_area > div [data-split-from] > *::first-letter,
+.pagedjs_pages > .pagedjs_page > .pagedjs_sheet > .pagedjs_pagebox > .pagedjs_area > div [data-split-from]::first-letter {
+	color: unset;
+	font-size: unset;
+	font-weight: unset;
+	font-family: unset;
+	color: unset;
+	line-height: unset;
+	float: unset;
+	padding: unset;
+	margin: unset;
+}
+
+.pagedjs_pages > .pagedjs_page > .pagedjs_sheet > .pagedjs_pagebox > .pagedjs_area > div [data-split-to]:after,
+.pagedjs_pages > .pagedjs_page > .pagedjs_sheet > .pagedjs_pagebox > .pagedjs_area > div [data-split-to]::after {
+	content: unset;
+}
+
+.pagedjs_pages > .pagedjs_page > .pagedjs_sheet > .pagedjs_pagebox > .pagedjs_area > div [data-split-from]:before,
+.pagedjs_pages > .pagedjs_page > .pagedjs_sheet > .pagedjs_pagebox > .pagedjs_area > div [data-split-from]::before {
+	content: unset;
+}
+
+.pagedjs_pages > .pagedjs_page > .pagedjs_sheet > .pagedjs_pagebox > .pagedjs_area > div li[data-split-from]:first-of-type {
+	list-style: none;
+}
+
+
+.pagedjs_clear-after::after {
+	content: none !important;
+}
+
+[data-align-last-split-element='justify'] {
+	text-align-last: justify;
+}
+
+
+@media print {
+	html {
+		width: 100%;
+		height: 100%;
+	}
+	body {
+		margin: 0;
+		padding: 0;
+		width: 100% !important;
+		height: 100% !important;
+		min-width: 100%;
+		max-width: 100%;
+		min-height: 100%;
+		max-height: 100%;
+	}
+	.pagedjs_pages {
+		width: auto;
+		display: block !important;
+		transform: none !important;
+		height: 100% !important;
+		min-height: 100%;
+		max-height: 100%;
+		overflow: visible;
+	}
+	.pagedjs_page {
+		margin: 0;
+		padding: 0;
+		max-height: 100%;
+		min-height: 100%;
+		height: 100% !important;
+		page-break-after: always;
+		break-after: page;
+	}
+	.pagedjs_sheet {
+		margin: 0;
+		padding: 0;
+		max-height: 100%;
+		min-height: 100%;
+		height: 100% !important;
+	}
+}
+</style><style></style><style type="text/css" data-pagedjs-inserted-styles="true">@font-face{font-family:EUDC;src:url(http://192.168.20.62:8683/template/46591217/1.0.1/fonts/EUDC.6365b59d.ttf);unicode-range:U+(NaN-F8FF)}/*! modern-normalize v1.0.0 | MIT License | https://github.com/sindresorhus/modern-normalize */:root{-moz-tab-size:4;-o-tab-size:4;tab-size:4}html{line-height:1.15;-webkit-text-size-adjust:100%}body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji}hr{height:0;color:inherit}abbr[title]{-webkit-text-decoration:underline dotted;text-decoration:underline dotted}b,strong{font-weight:bolder}code,kbd,pre,samp{font-family:ui-monospace,SFMono-Regular,Consolas,Liberation Mono,Menlo,monospace;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}table{text-indent:0;border-color:inherit}button,input,optgroup,select,textarea{font-family:inherit;font-size:100%;line-height:1.15;margin:0}button,select{text-transform:none}[type=button],button{-webkit-appearance:button}legend{padding:0}progress{vertical-align:baseline}summary{display:list-item}blockquote,dd,dl,figure,h1,h2,h3,h4,h5,h6,hr,p,pre{margin:0}button{background-color:transparent;background-image:none}button:focus{outline:1px dotted;outline:5px auto -webkit-focus-ring-color}fieldset,ol,ul{margin:0;padding:0}ol,ul{list-style:none}html{font-family:EUDC,Helvetica,Arial,sans-serif;line-height:1.5}body{font-family:inherit;line-height:inherit}*,::after,::before{box-sizing:border-box;border-width:0;border-style:solid;border-color:#e5e7eb}hr{border-top-width:1px}img{border-style:solid}textarea{resize:vertical}input::-moz-placeholder,textarea::-moz-placeholder{color:#9ca3af}input:-ms-input-placeholder,textarea:-ms-input-placeholder{color:#9ca3af}input::placeholder,textarea::placeholder{color:#9ca3af}button{cursor:pointer}table{border-collapse:collapse}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit}a{color:inherit;text-decoration:inherit}button,input,optgroup,select,textarea{padding:0;line-height:inherit;color:inherit}code,kbd,pre,samp{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,Liberation Mono,Courier New,monospace}audio,canvas,embed,iframe,img,object,svg,video{display:block;vertical-align:middle}img,video{max-width:100%;height:auto}td{border-color:rgba(0,0,0,var(--tw-border-opacity));border-width:2px}li,td{--tw-border-opacity:1}li{border-color:rgba(107,114,128,var(--tw-border-opacity));border-bottom-width:2px;color:rgba(107,114,128,var(--tw-text-opacity))}.table-caption,li{--tw-text-opacity:1}.table-caption{--tw-bg-opacity:1;background-color:rgba(59,130,246,var(--tw-bg-opacity));border-radius:.375rem;font-weight:400;font-size:1rem;line-height:1.5rem;padding-top:.5rem;padding-bottom:.5rem;padding-left:.5rem;padding-right:.5rem;text-align:left;color:rgba(255,255,255,var(--tw-text-opacity))}.table-td{--tw-border-opacity:1;border-color:rgba(107,114,128,var(--tw-border-opacity));border-top-width:0;border-right-width:0;border-left-width:0;border-bottom-width:1px;font-weight:300;font-size:.875rem;line-height:1.25rem;padding-top:.25rem;padding-bottom:.25rem;padding-left:.25rem;padding-right:.25rem;--tw-text-opacity:1;color:rgba(107,114,128,var(--tw-text-opacity))}.table-display{display:flex;justify-content:space-between}.page{margin-left:auto;margin-right:auto;width:20cm}@media print{}.bg-ruri{--tw-bg-opacity:1;background-color:rgba(59,130,246,var(--tw-bg-opacity))}.border-black{--tw-border-opacity:1;border-color:rgba(0,0,0,var(--tw-border-opacity))}.border-gray-200{--tw-border-opacity:1;border-color:rgba(229,231,235,var(--tw-border-opacity))}.border-ruri{--tw-border-opacity:1;border-color:rgba(59,130,246,var(--tw-border-opacity))}.rounded-md{border-radius:.375rem}.rounded-full{border-radius:9999px}.border-dashed{border-style:dashed}.border-2{border-width:2px}.border{border-width:1px}.border-t-0{border-top-width:0}.border-b-0{border-bottom-width:0}.border-b-2{border-bottom-width:2px}.border-t{border-top-width:1px}.border-r{border-right-width:1px}.flex{display:flex}.table{display:table}.table-caption{display:table-caption}.flex-col{flex-direction:column}.items-start{align-items:flex-start}.items-center{align-items:center}.justify-start{justify-content:flex-start}.justify-end{justify-content:flex-end}.justify-center{justify-content:center}.justify-between{justify-content:space-between}.justify-around{justify-content:space-around}.justify-evenly{justify-content:space-evenly}.flex-shrink-0{flex-shrink:0}.float-right{float:right}.clear-right{clear:right}.font-light{font-weight:300}.font-normal{font-weight:400}.font-bold{font-weight:700}.h-4{height:1rem}.h-6{height:1.5rem}.h-8{height:2rem}.h-10{height:2.5rem}.h-14{height:3.5rem}.h-16{height:4rem}.h-screen{height:100vh}.text-xs{font-size:.75rem;line-height:1rem}.text-sm{font-size:.875rem;line-height:1.25rem}.text-base{font-size:1rem;line-height:1.5rem}.text-xl{font-size:1.25rem;line-height:1.75rem}.list-disc{list-style-type:disc}.-m-3{margin:-.75rem}.my-1{margin-top:.25rem;margin-bottom:.25rem}.mx-1{margin-left:.25rem;margin-right:.25rem}.my-2{margin-top:.5rem;margin-bottom:.5rem}.my-3{margin-top:.75rem;margin-bottom:.75rem}.mx-auto{margin-left:auto;margin-right:auto}.mt-1{margin-top:.25rem}.ml-1{margin-left:.25rem}.mt-2{margin-top:.5rem}.mb-2{margin-bottom:.5rem}.ml-2{margin-left:.5rem}.ml-3{margin-left:.75rem}.ml-auto{margin-left:auto}.py-1{padding-top:.25rem;padding-bottom:.25rem}.py-2{padding-top:.5rem;padding-bottom:.5rem}.px-2{padding-left:.5rem;padding-right:.5rem}.px-10{padding-left:2.5rem;padding-right:2.5rem}.pl-1{padding-left:.25rem}.pt-2{padding-top:.5rem}.pb-3{padding-bottom:.75rem}.pl-4{padding-left:1rem}.pl-6{padding-left:1.5rem}.pr-7{padding-right:1.75rem}*{--tw-shadow:0 0 transparent;--tw-ring-inset:var(--tw-empty,/*!*/ /*!*/);--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgba(59,130,246,0.5);--tw-ring-offset-shadow:0 0 transparent;--tw-ring-shadow:0 0 transparent}.table-fixed{table-layout:fixed}.text-center{text-align:center}.text-right{text-align:right}.text-white{--tw-text-opacity:1;color:rgba(255,255,255,var(--tw-text-opacity))}.text-primary{--tw-text-opacity:1;color:rgba(109,164,216,var(--tw-text-opacity))}.text-belstarRed{--tw-text-opacity:1;color:rgba(255,56,96,var(--tw-text-opacity))}.text-belstarGray{--tw-text-opacity:1;color:rgba(107,114,128,var(--tw-text-opacity))}.text-ruri{--tw-text-opacity:1;color:rgba(59,130,246,var(--tw-text-opacity))}.text-title{--tw-text-opacity:1;color:rgba(115,122,135,var(--tw-text-opacity))}.text-font{--tw-text-opacity:1;color:rgba(107,114,128,var(--tw-text-opacity))}.break-words{overflow-wrap:break-word}.break-all{word-break:break-all}.w-8{width:2rem}.w-16{width:4rem}.w-1\/2{width:50%}.w-full{width:100%}.transform{--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;transform:translateX(var(--tw-translate-x)) translateY(var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.-rotate-6{--tw-rotate:-6deg}@-webkit-keyframes spin{to{transform:rotate(1turn)}}@keyframes spin{to{transform:rotate(1turn)}}@-webkit-keyframes ping{75%,to{transform:scale(2);opacity:0}}@keyframes ping{75%,to{transform:scale(2);opacity:0}}@-webkit-keyframes pulse{50%{opacity:.5}}@keyframes pulse{50%{opacity:.5}}@-webkit-keyframes bounce{0%,to{transform:translateY(-25%);-webkit-animation-timing-function:cubic-bezier(.8,0,1,1);animation-timing-function:cubic-bezier(.8,0,1,1)}50%{transform:none;-webkit-animation-timing-function:cubic-bezier(0,0,.2,1);animation-timing-function:cubic-bezier(0,0,.2,1)}}@keyframes bounce{0%,to{transform:translateY(-25%);-webkit-animation-timing-function:cubic-bezier(.8,0,1,1);animation-timing-function:cubic-bezier(.8,0,1,1)}50%{transform:none;-webkit-animation-timing-function:cubic-bezier(0,0,.2,1);animation-timing-function:cubic-bezier(0,0,.2,1)}}.text-dispersion{text-justify:inter-character;-moz-text-align-last:justify;text-align-last:justify;text-align:text-justify}.vertical{-ms-writing-mode:tb-rl;writing-mode:vertical-rl}.break-inside{page-break-inside:avoid}.break-after{}.pagedjs_page{--pagedjs-margin-top:.5cm;--pagedjs-margin-right:0px;--pagedjs-margin-left:0px;--pagedjs-margin-bottom:.5cm;--pagedjs-border-top:[object Object];--pagedjs-border-right:[object Object];--pagedjs-border-left:[object Object];--pagedjs-border-bottom:[object Object];--pagedjs-pagebox-width:210mm;--pagedjs-pagebox-height:297mm}:root{--pagedjs-orientation:portrait;--pagedjs-width:210mm;--pagedjs-height:297mm;--pagedjs-width-right:210mm;--pagedjs-height-right:297mm;--pagedjs-width-left:210mm;--pagedjs-height-left:297mm}@page{size:A4 portrait;margin:0px;padding:0px;padding:0px}</style></head><body><template data-ref="pagedjs-content"></template><div class="pagedjs_pages" style="--pagedjs-page-count:2;">
+<div class="pagedjs_page pagedjs_first_page pagedjs_right_page" data-page-number="1" id="page-1" data-break-after="always">
+	<div class="pagedjs_sheet">
+		<div class="pagedjs_bleed pagedjs_bleed-top">
+			<div class="pagedjs_marks-crop"></div>
+			<div class="pagedjs_marks-middle">
+				<div class="pagedjs_marks-cross"></div>
+			</div>
+			<div class="pagedjs_marks-crop"></div>
+		</div>
+		<div class="pagedjs_bleed pagedjs_bleed-bottom">
+			<div class="pagedjs_marks-crop"></div>
+			<div class="pagedjs_marks-middle">
+				<div class="pagedjs_marks-cross"></div>
+			</div>		<div class="pagedjs_marks-crop"></div>
+		</div>
+		<div class="pagedjs_bleed pagedjs_bleed-left">
+			<div class="pagedjs_marks-crop"></div>
+			<div class="pagedjs_marks-middle">
+				<div class="pagedjs_marks-cross"></div>
+			</div>		<div class="pagedjs_marks-crop"></div>
+		</div>
+		<div class="pagedjs_bleed pagedjs_bleed-right">
+			<div class="pagedjs_marks-crop"></div>
+			<div class="pagedjs_marks-middle">
+				<div class="pagedjs_marks-cross"></div>
+			</div>
+			<div class="pagedjs_marks-crop"></div>
+		</div>
+		<div class="pagedjs_pagebox">
+			<div class="pagedjs_margin-top-left-corner-holder">
+				<div class="pagedjs_margin pagedjs_margin-top-left-corner"><div class="pagedjs_margin-content"></div></div>
+			</div>
+			<div class="pagedjs_margin-top">
+				<div class="pagedjs_margin pagedjs_margin-top-left"><div class="pagedjs_margin-content"></div></div>
+				<div class="pagedjs_margin pagedjs_margin-top-center"><div class="pagedjs_margin-content"></div></div>
+				<div class="pagedjs_margin pagedjs_margin-top-right"><div class="pagedjs_margin-content"></div></div>
+			</div>
+			<div class="pagedjs_margin-top-right-corner-holder">
+				<div class="pagedjs_margin pagedjs_margin-top-right-corner"><div class="pagedjs_margin-content"></div></div>
+			</div>
+			<div class="pagedjs_margin-right">
+				<div class="pagedjs_margin pagedjs_margin-right-top"><div class="pagedjs_margin-content"></div></div>
+				<div class="pagedjs_margin pagedjs_margin-right-middle"><div class="pagedjs_margin-content"></div></div>
+				<div class="pagedjs_margin pagedjs_margin-right-bottom"><div class="pagedjs_margin-content"></div></div>
+			</div>
+			<div class="pagedjs_margin-left">
+				<div class="pagedjs_margin pagedjs_margin-left-top"><div class="pagedjs_margin-content"></div></div>
+				<div class="pagedjs_margin pagedjs_margin-left-middle"><div class="pagedjs_margin-content"></div></div>
+				<div class="pagedjs_margin pagedjs_margin-left-bottom"><div class="pagedjs_margin-content"></div></div>
+			</div>
+			<div class="pagedjs_margin-bottom-left-corner-holder">
+				<div class="pagedjs_margin pagedjs_margin-bottom-left-corner"><div class="pagedjs_margin-content"></div></div>
+			</div>
+			<div class="pagedjs_margin-bottom">
+				<div class="pagedjs_margin pagedjs_margin-bottom-left"><div class="pagedjs_margin-content"></div></div>
+				<div class="pagedjs_margin pagedjs_margin-bottom-center"><div class="pagedjs_margin-content"></div></div>
+				<div class="pagedjs_margin pagedjs_margin-bottom-right"><div class="pagedjs_margin-content"></div></div>
+			</div>
+			<div class="pagedjs_margin-bottom-right-corner-holder">
+				<div class="pagedjs_margin pagedjs_margin-bottom-right-corner"><div class="pagedjs_margin-content"></div></div>
+			</div>
+			<div class="pagedjs_area">
+				<div class="pagedjs_page_content" style="column-width: 794px; column-gap: calc(var(--pagedjs-margin-right) + var(--pagedjs-margin-left));"><div><noscript data-ref="fcb7e72c-56d9-4e64-b8aa-21482d60a2c8"><strong data-ref="3743f84b-2286-4763-a16e-54802ccfd242">We're sorry but credit-c-billing doesn't work properly without JavaScript enabled. Please enable it to continue.</strong></noscript><div class="h-screen" data-ref="c973425c-2ff2-4c1e-a0a3-dcfa9dbe4158" data-split-to="c973425c-2ff2-4c1e-a0a3-dcfa9dbe4158" data-split-original="true" data-last-split-element="true" data-align-last-split-element="auto"><div data-v-43523cae="" class="page break-inside break-after" data-ref="6dc4ffc1-0be7-41df-bd86-d8a547b40f06" data-break-after="always"><header class="flex w-full items-center break-inside  text-title h-14 " data-v-43523cae="" data-ref="48069244-a5aa-46b8-abd7-dd64d8739197"><img src="./assets/imgs/belstar.23cb18ed.svg" class="h-16 -m-3" data-ref="a6cee23b-b579-477e-8c18-8d4a35ec82b5"><h1 class="text-xl ml-3" data-ref="47a7463d-bf00-481e-8d73-f64281985467">百星國際商業銀行</h1><section class="text-sm ml-auto flex items-center" data-ref="12719c7e-de9a-4078-988e-4fa4bd80002a"><h3 data-ref="5b9f00b7-509b-4416-aa74-2f6dde5a906c"><span class="text-xl" data-ref="5d1b74a2-00e9-40c3-b368-037b12219bd7">信用卡</span>消費明細對帳單</h3><img src="./assets/imgs/credit.91850f2d.png" class="h-10 -rotate-6 transform ml-2" data-ref="3a298135-11cb-40ea-94c4-f48bfe198429"></section></header><p data-v-43523cae="" class="text-xs text-right  text-primary" data-ref="276a425e-5d1f-410a-b0b1-31ca8a1e3f59"> 百星客服電話：(08)8508-8408 </p><div data-v-43523cae="" data-ref="c3bf1802-9d41-49a2-89dd-da4a48bf70d2"><div data-v-43523cae="" class="flex items-center" data-ref="7e3ddd3f-70e7-4c5b-bc59-eecc811da855"><div class="w-full text-title flex flex-col " data-v-43523cae="" data-ref="4fb58582-f151-464f-a857-96d72fac2a81"><section class="text-sm flex items-start justify-around w-full" data-ref="5c29470b-6872-4cf8-8b33-6f327661ed4e"><div data-ref="9cc65c76-7840-46e3-80a0-d55f99adc7c4"><address data-ref="20af46e0-7f83-4a6e-9bfa-a9b17e6a9489"> 郵編：80764 <br data-ref="a45ce126-fb5b-4479-ae8b-604cfb329e01"> 地址：高雄市前鎮區民權二路6號6樓之2 <br data-ref="d6495553-37c1-4115-ae0b-9ee038d730f8"></address><p data-ref="81e4f111-31ec-46f6-a89f-756e3b901e0c"></p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQAAAAAfCAYAAAAIhROcAAAEGWlDQ1BrQ0dDb2xvclNwYWNlR2VuZXJpY1JHQgAAOI2NVV1oHFUUPrtzZyMkzlNsNIV0qD8NJQ2TVjShtLp/3d02bpZJNtoi6GT27s6Yyc44M7v9oU9FUHwx6psUxL+3gCAo9Q/bPrQvlQol2tQgKD60+INQ6Ium65k7M5lpurHeZe58853vnnvuuWfvBei5qliWkRQBFpquLRcy4nOHj4g9K5CEh6AXBqFXUR0rXalMAjZPC3e1W99Dwntf2dXd/p+tt0YdFSBxH2Kz5qgLiI8B8KdVy3YBevqRHz/qWh72Yui3MUDEL3q44WPXw3M+fo1pZuQs4tOIBVVTaoiXEI/MxfhGDPsxsNZfoE1q66ro5aJim3XdoLFw72H+n23BaIXzbcOnz5mfPoTvYVz7KzUl5+FRxEuqkp9G/Ajia219thzg25abkRE/BpDc3pqvphHvRFys2weqvp+krbWKIX7nhDbzLOItiM8358pTwdirqpPFnMF2xLc1WvLyOwTAibpbmvHHcvttU57y5+XqNZrLe3lE/Pq8eUj2fXKfOe3pfOjzhJYtB/yll5SDFcSDiH+hRkH25+L+sdxKEAMZahrlSX8ukqMOWy/jXW2m6M9LDBc31B9LFuv6gVKg/0Szi3KAr1kGq1GMjU/aLbnq6/lRxc4XfJ98hTargX++DbMJBSiYMIe9Ck1YAxFkKEAG3xbYaKmDDgYyFK0UGYpfoWYXG+fAPPI6tJnNwb7ClP7IyF+D+bjOtCpkhz6CFrIa/I6sFtNl8auFXGMTP34sNwI/JhkgEtmDz14ySfaRcTIBInmKPE32kxyyE2Tv+thKbEVePDfW/byMM1Kmm0XdObS7oGD/MypMXFPXrCwOtoYjyyn7BV29/MZfsVzpLDdRtuIZnbpXzvlf+ev8MvYr/Gqk4H/kV/G3csdazLuyTMPsbFhzd1UabQbjFvDRmcWJxR3zcfHkVw9GfpbJmeev9F08WW8uDkaslwX6avlWGU6NRKz0g/SHtCy9J30o/ca9zX3Kfc19zn3BXQKRO8ud477hLnAfc1/G9mrzGlrfexZ5GLdn6ZZrrEohI2wVHhZywjbhUWEy8icMCGNCUdiBlq3r+xafL549HQ5jH+an+1y+LlYBifuxAvRN/lVVVOlwlCkdVm9NOL5BE4wkQ2SMlDZU97hX86EilU/lUmkQUztTE6mx1EEPh7OmdqBtAvv8HdWpbrJS6tJj3n0CWdM6busNzRV3S9KTYhqvNiqWmuroiKgYhshMjmhTh9ptWhsF7970j/SbMrsPE1suR5z7DMC+P/Hs+y7ijrQAlhyAgccjbhjPygfeBTjzhNqy28EdkUh8C+DU9+z2v/oyeH791OncxHOs5y2AtTc7nb/f73TWPkD/qwBnjX8BoJ98VQNcC+8AAAAJcEhZcwAADsQAAA7EAZUrDhsAAAFZaVRYdFhNTDpjb20uYWRvYmUueG1wAAAAAAA8eDp4bXBtZXRhIHhtbG5zOng9ImFkb2JlOm5zOm1ldGEvIiB4OnhtcHRrPSJYTVAgQ29yZSA1LjQuMCI+CiAgIDxyZGY6UkRGIHhtbG5zOnJkZj0iaHR0cDovL3d3dy53My5vcmcvMTk5OS8wMi8yMi1yZGYtc3ludGF4LW5zIyI+CiAgICAgIDxyZGY6RGVzY3JpcHRpb24gcmRmOmFib3V0PSIiCiAgICAgICAgICAgIHhtbG5zOnRpZmY9Imh0dHA6Ly9ucy5hZG9iZS5jb20vdGlmZi8xLjAvIj4KICAgICAgICAgPHRpZmY6T3JpZW50YXRpb24+MTwvdGlmZjpPcmllbnRhdGlvbj4KICAgICAgPC9yZGY6RGVzY3JpcHRpb24+CiAgIDwvcmRmOlJERj4KPC94OnhtcG1ldGE+CkzCJ1kAAAF0SURBVHgB7dTLbsMwDETRuP//z21UdApCUJ1suprjhSWID4mXxFyfz+/x/K7reqztWtd32ufsJ+Q3ZvnP+N2+5zzZk3vevZ/t95x8X8Xs9r/ePXPPfeLnmned/O7OEjdznVjljfG/yxnfmSdxd/fsOd+JmfniP/PMfXz3s8TFnnX3S13xn/a5T3zW2BK3nyfvvsY/8ZPn7jttifuve1be3PHO2+J7es+yfayfDwEEOgkQgM6+qxqBbwIEwCAgUEyAABQ3X+kIEAAzgEAxAQJQ3HylI0AAzAACxQQIQHHzlY4AATADCBQTIADFzVc6AgTADCBQTIAAFDdf6QgQADOAQDEBAlDcfKUjQADMAALFBAhAcfOVjgABMAMIFBMgAMXNVzoCBMAMIFBMgAAUN1/pCBAAM4BAMQECUNx8pSNAAMwAAsUECEBx85WOAAEwAwgUEyAAxc1XOgIEwAwgUEyAABQ3X+kIEAAzgEAxAQJQ3HylI/AFU74nTIlSPAwAAAAASUVORK5CYII=" class="my-2" data-ref="51e7e938-136a-4152-9056-516934a53e66"></div><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPYAAAD2AQMAAADf3OiLAAAABlBMVEX///8AAABVwtN+AAAACXBIWXMAAA7EAAAOxAGVKw4bAAAB3ElEQVRYhe2Z0Y0DMQhEkVzAluTWXdIWYInADHjvovwHpFjRydm394HMMOCI/NZ316W2tkzb7msN1XHbw+VPdXXgC0SH2rO1bS+TG6L6HN+m3mIfBmoh2n/sRtziuy0sjZNpx5FcglOyF23fiFMZ9oqC2BM/n7f8q8uhbw/o3+dN/3X5WRdPST1c+bCKco9vIUQ9yrCDGv7pwQXKYIjQBza3V6wGXOaAv0WUMukVIpP6Ls9d1gzrj8R5RNKBT3iy4DQ8Sq+vvtGMvzqnGjYSbUAiAovO/KrNYWUZnNLo3Kgt4ujvavPIL6U5U+5RaK8WHJ011JxhxdpN+EY1ZS5RH2wxMv+Kc7ai2dlB6zSHzK/ifNLW4MywNU3FXB04axI4VBKzDtKtA0cdorJzymGL/fhfac5uOjxtRX8BuTz1tzynS7hEUJYssvHkV20OiWhOxl6WntWBcyxGZcr+ghX39BfVuWZ/TWfY3nGvsOsm3KcEGMIxCqq8BaebQRMTU8LccekoDTgXiutOo1PNibM+j/sVzf46GiW+24H7nzMWc6yMW64mnLKI+qrUt/LSsRHnN86XJ9f6cNwMoSbFXS+rbAcuwju5R9aav9J04NQ3eiLlTMzLxanagf/WN9cLwh31R00lp4UAAAAASUVORK5CYII=" class="h-16 my-3" data-ref="dcc45bd4-a5eb-4e78-8c7a-97f29814c3d3"></section><p class="w-full text-right text-xs pr-7" data-ref="c40a7f49-b382-43ad-ae14-c9ac0f71225a">交寄日期:109/05/30</p></div><table class="table-fixed w-full" data-v-43523cae="" data-ref="ec169646-fa98-4152-b8b5-0808df987c04"><caption class="table-caption" data-ref="198cc257-87a6-4e1f-85a0-c612dc74a235"> 信用額度 </caption><tbody data-ref="409b6f62-a5b0-4770-804e-4f01ed261f3b"><tr data-ref="6a3a50d3-12c8-488e-9c51-bd7c57ae6024"><td class="table-td table-display" data-ref="029fd25a-67fc-44ac-975f-692a7b26c52d"><span data-ref="7ee3a600-ebfc-48b9-bd90-7f9e166766cd">信用額度</span><span data-ref="081ef0c5-138f-47d0-a251-2200fb86befa">130,000</span></td></tr><tr data-ref="b7c36d09-fd88-44d8-a959-de6a32e0d6da"><td class="table-td table-display" data-ref="cc1ca098-a88c-46ba-b964-a80ce9842e13"><span data-ref="f410b115-8b4f-40f9-90ed-f18768fd4e23">國內預借現金額度</span><span data-ref="189bf089-4a6f-4658-8cd3-1f7d1ea0a6e0">80,000</span></td></tr><tr data-ref="4f65eec7-f79a-4e9b-ac5d-f227848f60e3"><td class="table-td table-display" data-ref="6dbedf4b-00dd-4e25-8a4c-9934a278060d"><span data-ref="64492f39-ef7b-4e9f-bc43-6af2b3c61a98">國外預借現金額度</span><span data-ref="00509b88-6d53-4a44-b8b1-26044fd5a90a">50,000</span></td></tr><tr data-ref="7b17b248-0148-4227-a0fb-1f4891e2c109"><td class="table-td table-display" data-ref="15cbe931-22db-4956-b2ac-4402291dc370"><span data-ref="d307e0d9-8e8e-4ca7-ba62-9c0b402dc876">循環信用利率</span><span data-ref="2670a335-04b7-415e-84f5-668e2074d66c">1.5%</span></td></tr></tbody></table></div><div data-v-43523cae="" class="flex w-full" data-ref="b7f9f53f-3ae7-455e-a876-b4f1a895f3d0"><section data-v-43523cae="" class="w-1/2" data-ref="316a8a84-8150-4715-a3c1-9338b17e1073"><table data-v-1fd8e2fa="" class=" w-full my-1" data-v-43523cae="" data-ref="0a67e765-e67d-48eb-885d-836c91d3a4a6"><caption data-v-1fd8e2fa="" class="table-caption" data-ref="da204ac7-b77a-41f3-8894-8bfe893ed566"> 帳務資訊 </caption><tbody data-ref="5a285fb6-5588-427e-b1e7-53b94de3831f"><tr data-v-1fd8e2fa="" data-ref="d24bdeeb-98ed-4fdc-9369-99657a16d544"><td data-v-1fd8e2fa="" class="table-td table-display" data-ref="5962932d-f1f8-4808-8b22-cea395eda65d"><span data-v-1fd8e2fa="" class="none" data-ref="76c7e929-fc48-4175-a425-8ea32825034e">帳務結帳日</span><span data-v-1fd8e2fa="" class="none" data-ref="1fd34c72-4afa-469b-a5f5-337f7986e55b">109/05/27</span></td></tr><tr data-v-1fd8e2fa="" data-ref="b0f1c0a8-a5c6-43b7-a7cd-f8e48a052018"><td data-v-1fd8e2fa="" class="table-td table-display" data-ref="5ddec9a4-be47-48d6-9a90-1920b7b67fea"><span data-v-1fd8e2fa="" class="none" data-ref="377f3710-401f-4303-a321-83698c56947b">繳款截止日</span><span data-v-1fd8e2fa="" class="none" data-ref="c6f79644-db28-4f4c-a298-ce4e8359c16e">109/06/15</span></td></tr><tr data-v-1fd8e2fa="" data-ref="19a83c5f-1e31-41e1-b177-adf152c23712"><td data-v-1fd8e2fa="" class="table-td table-display" data-ref="05e39104-55a4-4880-bf6f-fe3bdf7a2ae4"><span data-v-1fd8e2fa="" class="none" data-ref="cbac26f1-e937-4a62-94a8-5c63537243ba">上期應繳金額</span><span data-v-1fd8e2fa="" class="none" data-ref="932e5b75-6790-401c-a9e8-07f8ca64a230">4,900</span></td></tr><tr data-v-1fd8e2fa="" data-ref="e8ced598-ec7a-4872-a6bf-0eac4abd32ae"><td data-v-1fd8e2fa="" class="table-td table-display" data-ref="2fcffa8f-480e-4c26-ab9a-c00863dc67f7"><span data-v-1fd8e2fa="" class="none" data-ref="69f0e6f6-de71-4456-9ed2-4d9b037ca796">已繳款金額</span><span data-v-1fd8e2fa="" class="none" data-ref="547a8602-03a8-4489-a8a4-aa85bd9a60dc">4,900</span></td></tr><tr data-v-1fd8e2fa="" data-ref="d2b3119f-fdae-4cb3-9ecb-30ceaa7b5dba"><td data-v-1fd8e2fa="" class="table-td table-display" data-ref="092e413a-ab0d-42dd-8944-1e65fa56bde0"><span data-v-1fd8e2fa="" class="none" data-ref="7eb65e10-251f-456a-aa5e-2af1a740de35">前期餘額</span><span data-v-1fd8e2fa="" class="none" data-ref="28f7a107-fe44-430e-b823-e5facdee25c3">0</span></td></tr><tr data-v-1fd8e2fa="" data-ref="3a929634-7fd3-42b7-b7f7-556e04f00979"><td data-v-1fd8e2fa="" class="table-td table-display" data-ref="2bbaef83-ccf0-459c-af32-c82ed30a69d0"><span data-v-1fd8e2fa="" class="none" data-ref="d55814f8-202c-4082-b5dd-0ac6435fbcb8">本期應繳金額</span><span data-v-1fd8e2fa="" class="none" data-ref="5661c472-5856-4979-b88d-6edb2889d194">5,844</span></td></tr><tr data-v-1fd8e2fa="" data-ref="05998e46-9c20-4e6a-a8b2-2bdb4e99c84b"><td data-v-1fd8e2fa="" class="table-td table-display" data-ref="526162c4-53fe-4857-9c4a-df3968072d07"><span data-v-1fd8e2fa="" class="font-bold" data-ref="17cd9964-11de-4cdf-945e-b710a1e7adad">本期應繳總金額</span><span data-v-1fd8e2fa="" class="font-bold" data-ref="c9cf3b5f-db8c-4e13-b69b-260f75c91a6a">5,844</span></td></tr><tr data-v-1fd8e2fa="" data-ref="3a0ec954-d91a-473e-89d5-e8db9f7d813c"><td data-v-1fd8e2fa="" class="table-td table-display" data-ref="681f4016-0066-4dba-a901-8c7688c8710c"><span data-v-1fd8e2fa="" class="none" data-ref="f822af7d-cd45-494f-864e-6d234f744280">最低應繳金額</span><span data-v-1fd8e2fa="" class="none" data-ref="38d5004f-71a6-43b1-98e4-f630d724b4b4">584</span></td></tr></tbody></table><div class="flex justify-evenly text-xs my-1" data-v-43523cae="" data-ref="e32e9a1f-9386-46ef-ac3e-9787d7bd3e63"><div class="flex flex-col items-center text-belstarRed justify-center" data-ref="d233da1e-3464-4213-9f37-bb3be977063a"><h3 data-ref="3ac1b9bd-d9ce-420c-9775-a351c02ec7d3">帳單消費分期</h3><img src="./assets/imgs/Get" alt="Barcode generated by Cognex Corporation" width="55" data-ref="7b88584f-5a4a-4b1f-ab92-049e3a5b7a14"></div><div class="flex flex-col items-center text-belstarRed justify-center" data-ref="835dbbdd-2b1e-4c61-9c67-3d1a27fdcbca"><h3 data-ref="29353527-a0fe-4c40-a33c-f93012039ca0">網路/ATM預借現金</h3><img src="./assets/imgs/Get" alt="Barcode generated by Cognex Corporation" width="55" data-ref="c9e0a908-dec1-486b-b1f1-aa486ab2aee9"></div></div><table class="table-fixed w-full" data-v-43523cae="" data-ref="c15ee8b5-ac4c-4744-a251-09800b015662"><caption class="table-caption" data-ref="f3e67ea2-dce8-4709-8e03-9d684cdbb3f7"> 紅利點數 </caption><tbody data-ref="ac2854e8-7ee5-442d-b500-9736de0d2f38"><tr data-ref="09f3306a-d1ce-4780-ac45-b02a5d6fef5a"><td class="table-td table-display" data-ref="8df1e9dd-7ede-4220-b8bb-2b44370e1016"><span data-ref="af99dd20-1ccd-499f-b46c-68064aa320d2">上期累積點數</span><span data-ref="668fce21-24aa-4459-9624-b2bc08fb2f6c">20</span></td></tr><tr data-ref="9e97e321-c3d8-4639-b670-af33f8dfbcee"><td class="table-td table-display" data-ref="a182d337-a34d-4d30-a779-5fb8b7d10f2e"><span data-ref="48d9de3e-878b-4030-bbbb-813f302cfc22">本期新增點數</span><span data-ref="12851b92-5bc8-4bd4-ac9a-51cd411cc7dd">12</span></td></tr><tr data-ref="302db7c8-63b7-4205-bb6e-56739914face"><td class="table-td table-display" data-ref="00f7b133-abce-4bfe-b5c4-a87c9b6c7e6b"><span data-ref="daa94b86-4151-493e-8555-88438163d5fa">本期使用紅利</span><span data-ref="725d2119-c116-4f5c-a324-05e36e06a7dd">0</span></td></tr><tr data-ref="a073141b-84e5-4973-a65f-aba9bc831ca1"><td class="table-td table-display" data-ref="a193973d-7533-4333-8857-642bd00d70fb"><span data-ref="7ea26ece-3454-4582-bf52-f4ea02b4dd9b">本期結餘點數</span><span data-ref="1594b1fa-6a4d-43c5-b71b-f1068b58b4cc">32</span></td></tr></tbody></table><div class="border-2 rounded-md border-t-0 border-ruri my-1" data-v-43523cae="" data-ref="fd3f394f-4f02-4710-8b17-f90bb681782f"><h2 class="bg-ruri text-white py-2 px-2 font-normal " data-ref="223b24ee-a287-457a-9665-b5b2083c8917">最新活動訊息</h2><section data-ref="43cbbdaa-8c0e-4953-9024-a1b7891976bb"><ul class="list-disc text-title pl-6 py-1 break-all" data-ref="8b4b4d51-94f9-4251-9310-07d229304454"><li class=" break-words border-b-0 text-xs" data-ref="e0818cdf-bdd0-4c04-a790-d12470ff3520"> @CoGo卡通知:@CoGo卡不只網購,更懂生活!天天愛用銜口/circle Pay/Pa錢包/百星PPay、週六來點蝦米/mimi/CAhouse皆享最高6%,百大數位生活3%(含網購/歡唱/餐飲),一般消費1%。適用109/8/3~110/1/27結帳帳單,更多經典百星卡新權益詳官網。 </li></ul></section></div><img data-v-43523cae="" src="./assets/imgs/enjoy.57207f80.jpg" class="border border-black" data-ref="478cfee2-c9bd-49ac-8e2c-5c03198a9173"></section><div data-v-43523cae="" class="w-1/2 pl-1" data-ref="95380f59-5993-4e6a-8d41-feeeba3668c6"><img data-v-43523cae="" src="./assets/imgs/delivery.f8f71510.jpg" class="my-1 border border-black" data-ref="d47f257e-4cb0-4ebf-8ca8-f2e2fcc83774"><img data-v-43523cae="" src="./assets/imgs/festival.dd7e3185.jpg" class="my-1 border border-black" data-ref="64085458-04ee-4fb5-995d-bad55c16122d"><img data-v-43523cae="" src="./assets/imgs/giveBack.0fbcb052.jpg" class="my-1 border border-black" data-ref="adf18275-e1c5-4874-b849-cc626b868bc0"><section class="text-xs  border border-black pb-3" data-v-43523cae="" data-ref="6597942f-a030-4521-b8de-14c9b0cfc334"><img src="./assets/imgs/tourism.8a7d9b82.jpg" class="mb-2" data-ref="14d88925-e0b8-427e-a3c1-5d58b58892f9"><h4 class="text-sm font-bold text-ruri " data-ref="f2f3052c-b470-4a20-a4b7-a06a2fcee7b0">【旅行就愛刷百星卡】</h4><p class="px-2 text-font" data-ref="25f342cc-66f8-46e0-8d99-5d6360b81bbf">  百星越航聯名卡飛不飛都有哩:109/7/1~12/31不出國也可享百星越航航空聯名卡「越飛越有哩」最優5元賺取一「亞洲萬里通」里數!指定消費另增加國內飯店、量販超市、便利商店、外送平台也同享優惠,詳官網。 </p></section></div></div></div></div></div></div></div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="pagedjs_page pagedjs_left_page" data-page-number="2" id="page-2">
+	<div class="pagedjs_sheet">
+		<div class="pagedjs_bleed pagedjs_bleed-top">
+			<div class="pagedjs_marks-crop"></div>
+			<div class="pagedjs_marks-middle">
+				<div class="pagedjs_marks-cross"></div>
+			</div>
+			<div class="pagedjs_marks-crop"></div>
+		</div>
+		<div class="pagedjs_bleed pagedjs_bleed-bottom">
+			<div class="pagedjs_marks-crop"></div>
+			<div class="pagedjs_marks-middle">
+				<div class="pagedjs_marks-cross"></div>
+			</div>		<div class="pagedjs_marks-crop"></div>
+		</div>
+		<div class="pagedjs_bleed pagedjs_bleed-left">
+			<div class="pagedjs_marks-crop"></div>
+			<div class="pagedjs_marks-middle">
+				<div class="pagedjs_marks-cross"></div>
+			</div>		<div class="pagedjs_marks-crop"></div>
+		</div>
+		<div class="pagedjs_bleed pagedjs_bleed-right">
+			<div class="pagedjs_marks-crop"></div>
+			<div class="pagedjs_marks-middle">
+				<div class="pagedjs_marks-cross"></div>
+			</div>
+			<div class="pagedjs_marks-crop"></div>
+		</div>
+		<div class="pagedjs_pagebox">
+			<div class="pagedjs_margin-top-left-corner-holder">
+				<div class="pagedjs_margin pagedjs_margin-top-left-corner"><div class="pagedjs_margin-content"></div></div>
+			</div>
+			<div class="pagedjs_margin-top">
+				<div class="pagedjs_margin pagedjs_margin-top-left"><div class="pagedjs_margin-content"></div></div>
+				<div class="pagedjs_margin pagedjs_margin-top-center"><div class="pagedjs_margin-content"></div></div>
+				<div class="pagedjs_margin pagedjs_margin-top-right"><div class="pagedjs_margin-content"></div></div>
+			</div>
+			<div class="pagedjs_margin-top-right-corner-holder">
+				<div class="pagedjs_margin pagedjs_margin-top-right-corner"><div class="pagedjs_margin-content"></div></div>
+			</div>
+			<div class="pagedjs_margin-right">
+				<div class="pagedjs_margin pagedjs_margin-right-top"><div class="pagedjs_margin-content"></div></div>
+				<div class="pagedjs_margin pagedjs_margin-right-middle"><div class="pagedjs_margin-content"></div></div>
+				<div class="pagedjs_margin pagedjs_margin-right-bottom"><div class="pagedjs_margin-content"></div></div>
+			</div>
+			<div class="pagedjs_margin-left">
+				<div class="pagedjs_margin pagedjs_margin-left-top"><div class="pagedjs_margin-content"></div></div>
+				<div class="pagedjs_margin pagedjs_margin-left-middle"><div class="pagedjs_margin-content"></div></div>
+				<div class="pagedjs_margin pagedjs_margin-left-bottom"><div class="pagedjs_margin-content"></div></div>
+			</div>
+			<div class="pagedjs_margin-bottom-left-corner-holder">
+				<div class="pagedjs_margin pagedjs_margin-bottom-left-corner"><div class="pagedjs_margin-content"></div></div>
+			</div>
+			<div class="pagedjs_margin-bottom">
+				<div class="pagedjs_margin pagedjs_margin-bottom-left"><div class="pagedjs_margin-content"></div></div>
+				<div class="pagedjs_margin pagedjs_margin-bottom-center"><div class="pagedjs_margin-content"></div></div>
+				<div class="pagedjs_margin pagedjs_margin-bottom-right"><div class="pagedjs_margin-content"></div></div>
+			</div>
+			<div class="pagedjs_margin-bottom-right-corner-holder">
+				<div class="pagedjs_margin pagedjs_margin-bottom-right-corner"><div class="pagedjs_margin-content"></div></div>
+			</div>
+			<div class="pagedjs_area">
+				<div class="pagedjs_page_content" style="column-width: 794px; column-gap: calc(var(--pagedjs-margin-right) + var(--pagedjs-margin-left));"><div><div class="h-screen" data-ref="c973425c-2ff2-4c1e-a0a3-dcfa9dbe4158" data-split-from="c973425c-2ff2-4c1e-a0a3-dcfa9dbe4158"><div data-v-43523cae="" class="page" data-ref="d8d5cc5b-5bf7-4bb0-9f2c-441a43053c70" data-previous-break-after="always"><div data-v-43523cae="" data-ref="12356b51-90af-45ea-9dde-3c92ea89cad3"><div data-v-43523cae="" data-ref="b7692c9c-a21e-48d4-89e8-a495c810bc64"><table class="w-full" data-v-43523cae="" data-ref="3cd8215a-ad1b-4389-aa5b-fd505e6d2f7f"><tbody data-ref="00edb174-01c4-4587-aabb-1133f7f8d957"><tr data-ref="f815a97d-d8e8-4639-af60-07cf75fa06a8"><th class="bg-ruri py-1 text-white font-light" data-ref="bda73df4-fa9a-4a18-8be4-f63cbcddf167"> 簽賬日 </th><th class="bg-ruri py-1 text-white font-light" data-ref="aaf876fc-a78b-4009-b912-6a6ab4bb249b"> 入帳日 </th><th class="bg-ruri py-1 text-white font-light" data-ref="bc78a67f-1243-4373-92b1-e66be39cebe2"> 交易項目 </th><th class="bg-ruri py-1 text-white font-light" data-ref="b2ab8cd9-8d97-451f-8f8d-e3cc2131a80f"> 幣別 </th><th class="bg-ruri py-1 text-white font-light" data-ref="c3cf95df-7e73-4a27-95eb-9e1e13ffe174"> 台幣金額 </th></tr><tr class=" text-belstarGray text-center text-sm break-words" data-ref="36629f6d-0d46-42b7-b968-f2b576f3af96"><td class="table-td" data-ref="915519e9-bcaa-47a0-b21e-f0537ffda93a">5/1</td><td class="table-td" data-ref="0750e786-9b00-4be1-a50e-d8dd0c2a0a58">5/2</td><td class="table-td" data-ref="bb7aeff5-a279-4fc0-9300-2f17cbac91ac">CAhouse 網購家國際資訊股份有限公司</td><td class="table-td" data-ref="6b4a9f90-fbb4-4cf1-a738-c826b3173107">TWD</td><td class="table-td" data-ref="5082c5c0-ce76-4767-b90d-bb37595ed615">1728</td></tr><tr class=" text-belstarGray text-center text-sm break-words" data-ref="26524ffb-98f0-401a-9cf0-ee8fb0b3007f"><td class="table-td" data-ref="2cadab43-a03f-4f5c-97f5-c0bea3f6f13b">5/1</td><td class="table-td" data-ref="85384b2b-b3b5-4949-95d5-e373cb3ef151">5/2</td><td class="table-td" data-ref="8fe5cab1-b38e-4882-aca0-7960cbf0bab6">居安有限公司</td><td class="table-td" data-ref="8f433b53-cfcf-4657-987a-edd78f24bd61">TWD</td><td class="table-td" data-ref="4651e211-ffab-4de9-8c49-a4dc99b35cb5">290</td></tr><tr class=" text-belstarGray text-center text-sm break-words" data-ref="5d28976c-3cfa-4d9e-ba1e-94a71b61b312"><td class="table-td" data-ref="6c1818b2-a0d4-4402-9155-3b3abaa49942">5/1</td><td class="table-td" data-ref="f1f0764a-66ef-45d0-b7a1-339198b96bd8">5/2</td><td class="table-td" data-ref="1aaa2343-d27f-4dd5-9a57-5b797500722d">大北百貨有限公司</td><td class="table-td" data-ref="aa0320cd-c380-4a5b-8356-5851f5fbf649">TWD</td><td class="table-td" data-ref="262b17c1-f703-4f30-a2ea-187368688822">120</td></tr><tr class=" text-belstarGray text-center text-sm break-words" data-ref="67aef8ee-439b-46a5-ac40-96a1bae96248"><td class="table-td" data-ref="b6c1a36c-4271-4224-b280-d6ddb2ce0c93">5/2</td><td class="table-td" data-ref="991b39da-900e-4d3d-8712-ae950d792212">5/3</td><td class="table-td" data-ref="cfd944c7-0890-4eb1-8ee9-535836c83203">大北百貨有限公司</td><td class="table-td" data-ref="aba95c10-bb9f-4855-b40f-7f92d6b70d4b">TWD</td><td class="table-td" data-ref="d1d5e0a5-c387-4268-8a31-4b5b3c5476c2">39</td></tr><tr class=" text-belstarGray text-center text-sm break-words" data-ref="d93fe151-a0e0-43c8-b4fd-2b9616a13b47"><td class="table-td" data-ref="473a6678-bdd0-4e63-9302-9619f4058953">5/2</td><td class="table-td" data-ref="f2151422-1b78-4c7e-b201-4a602c386802">5/3</td><td class="table-td" data-ref="2cfc0cb9-c260-4a9f-a2cf-b1013dfbc83a">大北百貨有限公司</td><td class="table-td" data-ref="5c165552-2e95-4f60-957b-5c0b5d310914">TWD</td><td class="table-td" data-ref="16914568-0409-4d47-a8bb-5c9647b3c825">321</td></tr><tr class=" text-belstarGray text-center text-sm break-words" data-ref="121032f9-a6ce-44ed-8900-949cf75389ca"><td class="table-td" data-ref="ed6f9d8c-9d94-4d1f-a955-25115d9c1c24">5/6</td><td class="table-td" data-ref="311fe4d0-fea4-408c-94a1-c6d7bffcf9e3">5/7</td><td class="table-td" data-ref="8738436e-b24f-4e12-820b-2020c071ea71">阿勾搭旅遊股份有限公司</td><td class="table-td" data-ref="c4acff2e-f0c9-47f8-a4aa-f50d6b6efbba">TWD</td><td class="table-td" data-ref="7b90f075-74a9-49d4-b0f2-d70d9824dfd2">1680</td></tr><tr class=" text-belstarGray text-center text-sm break-words" data-ref="2fe791e0-1529-4a8f-bf03-6b3df47d578c"><td class="table-td" data-ref="60a87a9e-03e5-49b8-b067-89800debc2a1">5/6</td><td class="table-td" data-ref="34a978b0-79e3-4ed5-be9b-c24d2f618aae">5/7</td><td class="table-td" data-ref="9983b4d8-7ca9-4fa5-abd6-1ca8a54a4225">abc- 係本茲股份有限公司</td><td class="table-td" data-ref="76d75cd2-00f1-45f5-bdc9-59ab756334e3">TWD</td><td class="table-td" data-ref="8d954d3e-1f21-47c9-9fb9-e3291b750027">399</td></tr><tr class=" text-belstarGray text-center text-sm break-words" data-ref="ca22dce2-ad15-41b3-8c51-7e285db6990b"><td class="table-td" data-ref="6029b3b5-5aad-451b-be6a-98ebb2ee879c">5/6</td><td class="table-td" data-ref="eba023b4-70c6-45c3-a52b-53177ad7244d">5/7</td><td class="table-td" data-ref="dc72410e-0f32-48d0-ba16-ce23464dc2cf">hifilx 影音串流-奈芙莉絲影音科技公司</td><td class="table-td" data-ref="219745f3-dab3-41c2-bed1-a95bde090092">TWD</td><td class="table-td" data-ref="77904adb-e135-4536-b7b4-6ceec29ff346">569</td></tr></tbody></table><section class="flex  items-center justify-center  break-inside w-full mt-1" data-v-43523cae="" data-ref="78c6dc84-a7e5-481e-942d-1845c7c966b5"><p class="break-words ml-2 text-xs text-font" data-ref="e0a94d61-4930-4e03-869e-107e975d0e13">信用卡循環年利率：本行ARMs指數＋加碼利率(5.97%~13.47%)上限為15%，預借現金手續費為每筆預借金額X3.5％＋150元循環利率基準日為104年9月1日，其他費用請上官網查詢。</p><p class="font-bold text-sm border-2 border-ruri px-10  flex-shrink-0 text-ruri " data-ref="8b73b07b-7f01-45a8-af08-4a3967ffee7c"> 謹慎理財<br data-ref="71675e68-4ddf-46d3-b0ee-ba89f0fc7b15">信用至上 </p></section><section class="py-1" data-v-43523cae="" data-ref="9408a855-1920-4346-ba0f-78e5755c6b47"><h3 class="bg-ruri text-white text-base  flex items-center justify-start font-normal  px-2 " data-ref="478722da-ba9e-484c-b4ed-53a89b7b23ce"> 卡友權益 </h3><p class="text-title font-bold text-xs" data-ref="9ea579c1-34db-4933-a94b-de5ea896bc2c">信用卡帳單給消費者注意事項</p><ul class="list-disc text-title pl-4" data-ref="446fb9ac-c39e-44f8-b89a-054b8a445bee"><li class="text-xs break-words border-b-0" data-ref="ed6c19e5-955a-43e6-b231-f95edaa588f7"> 辦理百星帳戶自動扣繳，輕鬆繳款免出門，歡迎至官網及網路銀行進行申辦，或來電(08)8508-8408按001將發送簡訊轉由智能客服線上為您服務。 </li><li class="text-xs break-words border-b-0" data-ref="1bcc6c0c-a04d-43a8-acc3-8c4451ec3aac"> 如循環信用利率不變，且無新增消費或其他費用，若您選擇僅依約繳交最低應繳金額，繳清本期帳款所需期間為3期，應繳納總金額為 12,120元，以上僅供參考，實際狀況仍視未來各期帳款資料為準。 </li><li class="text-xs break-words border-b-0" data-ref="d3ad95c4-435c-4bb8-9144-c32dfeda15d5"> 本行本年度截至本期帳單結帳日止已向您收取之利息及費用累計金額分別為446元510元。 </li><li class="text-xs break-words border-b-0" data-ref="c5cf353c-f21b-43e6-a24f-a674f8489b2d"> 各筆循環信用利息之計算：分期帳款以帳單繳款截止日次日為起息日，其餘帳款以各筆帳款入帳日為起息日。詳細說明請見信用卡約定條款或 本行網站。 </li><li class="text-xs break-words border-b-0" data-ref="92465ce4-2d96-4cd2-9c5b-942bb69eb368"> 為顧及持卡人之用卡便利性及快速即時性，如持卡人信用狀況良好，將由本行超額授權或於國際組織及收單機構授權作業處理過程中，若發生網路連線等異常狀況，則會由其代替本行授權同意該筆刷卡交易，而不透過本行檢核剩餘額度，因此可能有超額之情形生，但持卡人對超額 使用之帳款應一次清償完畢。 </li><li class="text-xs break-words border-b-0" data-ref="9a1266b4-c656-4f3f-85c0-9b5d95bb6ba7"> 重要通知】因應PChome於2020/9/30起停止PChome信箱服務，為保障您的權益，如您與本行約定的聯絡信箱為PChome信箱，敬請透過本行個人 網路銀行或行動銀行，更新您留存於本行之個人聯絡信箱，避免延遲繳納信用卡款或遺漏各項重要權益通知，變更路徑：個人設定與服務&gt;個人 資料變更&gt;基本資料設定。歡迎申請行動帳單，透過簡訊發送當期信用卡帳單給您，還可查詢前6期的歷史帳單，查帳繳款更輕鬆。 </li><li class="text-xs break-words border-b-0" data-ref="7ecbd373-85a6-4ead-9e10-341b57977ecf"> 歡迎使用百星信用卡預借現金服務，您目前國內可預借餘額為22,000元，國外可預借餘額為189,000元，國內／外預借現金額度合併計算並佔用 信用卡額度，預借餘額將隨您的繳款及信用卡狀況變動，可於官網或來電(02)2182-1313按133設定預借現金密碼；另本行官網提供24小時臺幣 網路預借現金功能，線上申請完成即撥入本人國內存款帳戶。 </li><li class="text-xs break-words border-b-0" data-ref="be9c2dab-2be5-4fc2-9c33-6d142db9a027"> 超商刷百星卡繳交代收費用明細，可洽本行客服查詢。 百星信用卡每月為您精心規劃多項活動，您可詳閱本行信用卡網站，查詢前開及其他各類優惠訊息。 謹慎理財 信用無價 分期零利率產品：零手續費、零總費用年百分率‧循環利率：6.12%~14%(依本行電腦評等而訂，基 準日:2015/9/1) ‧預借現金手續費(依預借現金約定結付幣別區分)：預借現金金額×3.5%＋(新臺幣100元/3.5美元/350日圓/2.5歐 元) ‧其他相關費率依本行網站及申請書公告。 </li></ul></section></div></div></div><div data-v-43523cae="" class="page" data-ref="a13f659f-e3ca-4e35-9b1b-bc41870b6c77"><div data-v-43523cae="" data-ref="703d607d-746b-4ec5-9881-9007d24ecc27"><div class="flex  items-center border-t  border-dashed break-inside  py-1 break-inside border-black" data-v-43523cae="" data-ref="6b2f458b-0368-440d-a388-13da0d8b66d0"><div class="flex text-xs flex-col border-r  border-dashed mx-1 border-black" data-ref="fafec386-38fc-4775-87a8-bfd8c1588179"><div class="flex items-center text-xs  justify-around" data-ref="4a93c1f0-d4ad-4811-8581-08ca0bbb870f"><span data-ref="40937bec-8e31-40a5-839e-d926db44ee81"><p class=" break-words ml-2" data-ref="91f92c76-b7c2-4c6f-ba29-6b80448c716d"> 便利商店使用(繳交上限為2萬元) </p><img width="100" src="./assets/imgs/Get(1)" class="mt-1 h-8" data-ref="9ec5b25b-030d-453f-8b3e-1d14843aa08c"><img width="100" src="./assets/imgs/Get(2)" class="mt-1 h-8" data-ref="fadc8a50-4cf7-40ee-81a3-927f766fb22b"></span><div class="flex flex-col justify-end" data-ref="8d1ea1c8-e741-45f0-ab6b-8db21cf790cb"><span data-ref="081e193d-4491-4d32-bb7c-dc9eb8d68f72"><input type="checkbox" data-ref="25bdc131-a806-4c01-b1b0-116255b32316"><label data-ref="1a99f82e-e2e3-4bd5-a2f2-7b2ae255508b"> 繳交應付總帳款 </label><img src="./assets/imgs/Get(3)" width="100" class="h-8" data-ref="e99ac45e-e411-49b6-b2aa-9065e319e092"></span><span data-ref="1d03d20e-c4e7-469e-b2d7-4f544819fe1e"><input type="checkbox" data-ref="98d1bc66-9490-423a-9d18-606c5195569f"><label data-ref="aac18311-43d3-42ec-a56e-e00c6aba0b15"> 繳交最低應繳金額 </label><img src="./assets/imgs/Get(2)" width="100" class="h-8" data-ref="82ea7478-329d-4e2b-b541-d4078d1dde31"></span></div></div><div class="flex" data-ref="ac50277d-9a82-468b-afbb-23cb50f45565"><p class="vertical" data-ref="3c15ae1a-8e79-4d0f-9eb6-02d8f4db147a">第一聯：全行代理收款傳票</p><table class="table-fixed w-full break-words" data-ref="ff582bb4-3e44-4540-a5bc-bb05c8dc87d0"><tbody data-ref="6a456e23-0a55-4a8c-94a9-1cb7e3c2eb50"><tr data-ref="d2b56fd2-b649-4312-98f6-64cbb83cfdc5"><td colspan="3" data-ref="539bbcff-26e4-495f-8076-f7e351b8c21e">戶名：百星國際商業銀行</td><td colspan="3" data-ref="509fb053-ad1e-454a-af53-dc1e93197402"> 付款月份：2020 年 05 月 </td></tr><tr data-ref="d2121cbd-e7ab-4dc1-aa43-f91727fca5a8"><td data-ref="3a219181-865f-4b5e-9f29-b8b906351137">全行代理<br data-ref="75d191fe-d509-4650-bfa3-d0dd9bfda6c1">收款專戶</td><td colspan="2" data-ref="9d75c0cc-f97d-4520-a518-c9f282464b02">百星銀行（代收類別:400212）</td><td colspan="2" class="text-xs" data-ref="410fdc3c-c4a5-4c21-b07b-104f232a8b48"> 自動繳款機繳款：輸入銀行代碼"021"及信用卡號網路繳費準備好您的她行活存帳戶進入轉帳繳費中心 </td><td rowspan="3" class="mx-auto text-center" data-ref="8f51f1a0-d961-4da7-8c5d-1ec36a3bc815"> 收訖戳記 <div class="rounded-full h-16 w-16 border-2 mx-auto " data-ref="ee45b8e5-6aa9-4476-91b6-8f2cadf974fd"></div></td></tr><tr data-ref="3125a75b-2223-4511-841a-850edfe01ab8"><td data-ref="890a3baa-2bd0-49ce-a4bb-d8be966bcbde">金額大寫</td><td colspan="4" data-ref="41da8b26-796b-4762-a77a-916143b3dd49"><ul class="text-dispersion" data-ref="01d266be-5917-4b54-894c-26f1a036e8e3"><span data-ref="3bdc7f1a-54b2-4dd4-bdda-e43c0c5fe12c">新臺幣：</span><span data-ref="20f55541-d99e-4293-84b9-8864ce291200"><span class="font-bold" data-ref="6b301117-7ebf-4146-9d24-c7081c539aa2"> </span><span data-ref="86006fbd-421c-4900-9ced-1d6f39f21801"> 佰</span></span><span data-ref="2a17422e-5af1-4e86-98ee-3eb997ec9113"><span class="font-bold" data-ref="3653cc28-8c96-4133-b9cc-0c15cfe74be3"> </span><span data-ref="df17436f-cd00-41fb-b6ec-dd5d725dcac5"> 拾</span></span><span data-ref="c86a81b1-cbaa-40aa-9a1b-2a675d520389"><span class="font-bold" data-ref="622e6d9e-23d9-49d5-a8a8-5048dc2c6de8"> </span><span data-ref="24db9303-bd75-4700-aed7-b415d26a1e72"> 萬</span></span><span data-ref="83a1b3b8-5ee2-4f33-a5e5-43b3036aee54"><span class="font-bold" data-ref="f1e68c58-06a5-49db-9645-b0b49dbd7e10"> 伍</span><span data-ref="b7695883-160f-4bb4-868c-db2d95a7c1fd"> 仟</span></span><span data-ref="94ed59ce-c639-476e-8541-e12bf103bafb"><span class="font-bold" data-ref="689b630f-a4da-44fc-83d5-c2e2c521536e"> 捌</span><span data-ref="967ff3e6-f93f-4f65-adaa-6732568480a0"> 佰</span></span><span data-ref="b91e4723-8b57-4db2-b9c9-a0aaeccfefb5"><span class="font-bold" data-ref="371e3623-0a44-4aa4-a2bf-be52369ec92f"> 肆</span><span data-ref="5ec9363e-c9b7-48b3-a138-6d4a93a3e6fc"> 拾</span></span><span data-ref="80d22972-d30f-45a2-88ff-136a565864c4"><span class="font-bold" data-ref="6a0f1b68-2e27-4fe6-aa9a-235ce274f832"> 肆</span><span data-ref="c8e41055-1f63-4755-ba9d-dba9aa1fbd41"> 元</span></span><span class="font-bold" data-ref="017b0347-1493-4fb6-b79d-9af608852a7d">整</span></ul></td></tr><tr data-ref="1a2f7741-5da5-4854-b824-da1e2a02a20a"><td data-ref="34d8abf0-654e-416a-8864-2cc2dcac25bb">認證欄</td><td colspan="4" data-ref="c1ccd805-e058-42c1-bd89-76250cec60d1"><img src="./assets/imgs/Get(4)" width="60" class="float-right pt-2" data-ref="ee95acf4-6489-422a-b653-7b8e60c43a7a"><p class="clear-right" data-ref="bcbb29ec-3567-4a2f-ad6a-8c006e02cb8c"> 手機掃描右側QRcode，以您的他行活存線上直接繳交卡費 </p></td></tr></tbody></table><div rowspan="5" class=" ml-1 w-8 justify-between flex flex-col " data-ref="3500e630-1c99-4f16-a258-80bb71b4e17f"><p data-ref="a52b200e-1468-47a6-aa16-5135bf55408c">主管</p><p data-ref="9049d5ac-3c5d-4f1e-a12e-2064562f33f6">會計</p><p data-ref="059e52de-316e-4944-8b96-6f110b29ac31">覆核</p><p data-ref="b01e5c32-778b-438f-afac-37fe80572537">記帳</p><p data-ref="09c9b7e8-9854-4aac-b8e3-edc05d143406">製票</p></div></div><div class="flex justify-around" data-ref="c83e55b9-7f7c-44fc-87ea-b57003d4cd9d"><img src="./assets/imgs/Get(3)" width="100" class="mt-2 h-8" data-ref="1ac87dfc-79ef-49b2-995e-3f01d28bc196"><img src="./assets/imgs/Get(3)" width="100" class="mt-2 h-8" data-ref="f57784ab-8f31-4d1a-913e-ca345fe8f296"></div></div><div class="flex text-xs" data-ref="5492c6d8-fd3a-4d9f-a3d2-961807d409e8"><p class="vertical" data-ref="149b14a5-faca-4143-ac22-d098c3eda05c">第二聯：本聯由繳款人收執</p><table class="break-words table-fixed text-center" data-ref="f939cf21-e76e-4bfc-af85-2835d521b53a"><tbody data-ref="d91b956f-0d3f-4a5e-ba3e-80ab29c06f9b"><tr data-ref="f5d0ce17-c819-40c4-92c4-2d05e9ec6924"><td colspan="7" data-ref="23e8a30b-ed02-4761-bf31-ee7705412a82">戶名</td></tr><tr data-ref="7dc706ed-a1cb-461c-ba8f-1f0b602e67c1"><td colspan="7" data-ref="c0b2ca74-8efb-4117-91f6-6436c15974f8">百星國際商業銀行</td></tr><tr data-ref="ffc31f1d-eb69-47e8-b4b7-1396433e08c9"><td data-ref="a9fbaa63-91b2-4330-ac33-357c26b4bdf2"><p class="border-b-2 items-center justify-center flex h-6 border-black" data-ref="bd231882-db0c-46bd-bc6f-bec7fcf8f8c9"> 佰 </p><p class="h-4 flex items-center justify-center font-light" data-ref="35cead5f-0538-45ad-af7c-bcb4ac408272"> </p></td><td data-ref="67026663-fda0-4891-92bc-c8cff0005db4"><p class="border-b-2 items-center justify-center flex h-6 border-black" data-ref="2a816b14-f678-439a-a116-678c186df322"> 拾 </p><p class="h-4 flex items-center justify-center font-light" data-ref="78913803-5926-41a9-995a-2d72909039db"> </p></td><td data-ref="57d11c1b-ad90-45af-9f36-814f3cb91ec6"><p class="border-b-2 items-center justify-center flex h-6 border-black" data-ref="f2c01ba6-5ba2-46e5-a57f-b4a730a63414"> 萬 </p><p class="h-4 flex items-center justify-center font-light" data-ref="f5a15768-f254-486d-b3cc-aed1b7fc126e"> </p></td><td data-ref="bbb10337-c10d-4e62-85a1-28203acd3e6c"><p class="border-b-2 items-center justify-center flex h-6 border-black" data-ref="d480ddf4-0201-4e8e-8477-a49565f4fdca"> 仟 </p><p class="h-4 flex items-center justify-center font-light" data-ref="2a2b690b-54d2-4e88-a540-9af5041d45ce"> 伍 </p></td><td data-ref="aadbde30-2929-464d-9d98-0865f9fd4f06"><p class="border-b-2 items-center justify-center flex h-6 border-black" data-ref="a307dbcc-c8f0-400c-8caa-b70ea16d82ef"> 佰 </p><p class="h-4 flex items-center justify-center font-light" data-ref="44188d5a-220f-4d04-b2fc-09059ab01a65"> 捌 </p></td><td data-ref="3a947afb-ce3f-42ef-a480-014a60ffc175"><p class="border-b-2 items-center justify-center flex h-6 border-black" data-ref="68edd8dd-460f-4418-9b78-321637899cd6"> 拾 </p><p class="h-4 flex items-center justify-center font-light" data-ref="0699be2e-c458-4f84-a5e4-c0e0c8b748db"> 肆 </p></td><td data-ref="dd05f35c-303d-427f-bef1-55c76754acf3"><p class="border-b-2 items-center justify-center flex h-6 border-black" data-ref="54962e99-014c-49b5-8640-e4fe6f81b119"> 元 </p><p class="h-4 flex items-center justify-center font-light" data-ref="ea998f5e-2e9b-4c69-8797-0bb78a297186"> 肆 </p></td></tr><tr data-ref="01bf270e-d6ef-4fef-b638-5a13afc23e65"><td colspan="7" data-ref="3816bb65-198a-4b5e-89ae-d745d49bde8c"><p class="border-b-2 border-black" data-ref="8810699e-26e0-4fe0-a92c-34104bb3d876">代收編號</p><p data-ref="5068a7b8-0cce-4fcc-a2f0-001d160e4d0d">0214-7897-6219</p></td></tr><tr data-ref="f73e9093-8601-4eeb-8916-e20750c935c5"><td colspan="3" data-ref="7869a8a7-e779-4652-a3c7-fe8f9fafe440">姓名</td><td colspan="4" data-ref="1ae5c804-2344-4fb1-ae5e-93d528a36ede"></td></tr><tr data-ref="ec1b4fff-c072-4e08-bc40-958776f5616c"><td colspan="7" data-ref="149783fe-1928-412b-9192-44253b2e40fd">繳款截止日</td></tr><tr data-ref="02036b0b-8b73-4ba0-829d-925b197aabf9"><td colspan="7" data-ref="74f7551d-dc1b-4767-aa61-1713dd5f0656">2020-06-15</td></tr><tr data-ref="8f7ee235-03bf-4c97-94fd-1cc55fc983e3"><td colspan="7" data-ref="dd8edc27-e506-4409-98a3-b8a9cc257c2e">本期應付總金額</td></tr><tr data-ref="0b42f991-2c79-477e-a94f-284f656df88c"><td colspan="7" data-ref="cb9c5eec-e5a1-41e4-988a-2b8376653ec1">5,844</td></tr><tr data-ref="ee38a061-a2d6-41b9-b715-793f7478031a"><td colspan="7" data-ref="5d918d8d-813e-4fe2-91cc-63c990b234b8">最低應繳總金額</td></tr><tr data-ref="08398c66-4e7d-4a0e-8e12-b4e7a07608b1"><td colspan="7" data-ref="22a7e18b-9c8b-4062-a0bf-129cc7f30f8f">584</td></tr></tbody></table></div></div></div></div></div></div></div>
+			</div>
+		</div>
+	</div>
+</div></div></body></html>
