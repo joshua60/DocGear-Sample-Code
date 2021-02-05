@@ -1,0 +1,47 @@
+    @media print {
+        .break-after {
+            break-after: always;
+        }
+        .header {
+            font-size: 8px;
+        }
+        .one {
+            counter-reset: page 1;
+        }
+        footer{
+            page:last;
+        }
+        .content-block,
+        p {
+            page-break-inside: avoid;
+        }
+        @page {
+            size: A4;
+            @font-face {
+                font-family: "SourceHanSansCN-Medium";
+                src: url(../fonts/SourceHanSansCN-Medium.otf);
+            }
+            margin: 0 0 15mm 0;
+            @bottom-center {
+                content: "第"counter(page)"页 共"counter(pages)"页";
+                /* content: "page" counter(page); */
+                font-size: 14px;
+                color: #333;
+                /* padding-bottom: 10mm; */
+            }
+            
+        }
+        
+        @page:first {
+            @bottom-center{
+                content: none;
+             }
+             margin: 0;
+        }
+        @page last{
+            @bottom-center{
+                content: none;
+             }
+             margin: 0;
+        }
+    }
